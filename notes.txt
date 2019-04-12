@@ -1,0 +1,46 @@
+
+The API I am using is the Public API for Public APIs, which is found here:
+https://api.publicapis.org/entries
+
+I chose this one because as soon as we were told to pick an API with an
+authentication type other than OAUTH, it seemed an obvious choice of
+data for filtering.
+
+The API data is structured as in the following example:
+The whole data set is a hash.
+The first value is a count of the number of entries in the second value.
+The second value is an Array of objects.
+The objects each have keys as listed below.
+
+Formatted JSON:
+{
+"count": 606,
+"entries": [
+{
+"API": "Cat Facts",
+"Description": "Daily cat facts",
+"Auth": "",
+"HTTPS": true,
+"Cors": "unknown",
+"Link": "https://alexwohlbruck.github.io/cat-facts/",
+"Category": "Animals"
+},
+... (604 more of those)
+{
+"API": "Cats",
+"Description": "Pictures of cats from Tumblr",
+"Auth": "apiKey",
+"HTTPS": true,
+"Cors": "unknown",
+"Link": "https://thecatapi.com/docs.html",
+"Category": "Animals"
+}
+]}
+
+
+I would like to make this more generic. Here are my notes about that:
+// Where is it specific to this API?
+// The url in this file (app.js)
+// The data structure and key names in the list_view.js file
+// Could this be made more generic so that these specific details could be
+// read in from somewhere else?
