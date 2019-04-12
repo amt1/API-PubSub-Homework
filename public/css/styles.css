@@ -1,0 +1,11 @@
+
+
+li.data-list-item {
+  background-color: lightpink;
+  border: 5px double coral;
+  border-radius: 10px;
+  padding: 2em;
+  margin: 1.5em;
+  width: 400px;
+  display: inline-block;
+}
