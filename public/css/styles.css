@@ -3,6 +3,22 @@ body {
   font-family: "Verdana", "Arial Narrow", sans-serif;
 }
 
+.center {
+  text-align: center;
+}
+
+.hide {
+  display: none;
+}
+
+form#search-form.show {
+  display: block;
+  background-color: white;
+  padding: 2em;
+  margin: 1em;
+  border: 1px solid black;
+}
+
 li.data-list-item {
   background-color: white;
   border: 5px double black;
