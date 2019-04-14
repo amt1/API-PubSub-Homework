@@ -11,9 +11,7 @@ InfoProcessor.prototype.fetchURLData = function (api_url) {
   request.get()
     .then( (apiData)=>{
       this.api_data = apiData;
-      console.log(this.api_data);
       PubSub.publish('InfoProcessor:api-data-ready', this.api_data);
-      console.log(this.api_data);
     });
 };
 

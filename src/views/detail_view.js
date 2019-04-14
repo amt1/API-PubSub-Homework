@@ -15,32 +15,54 @@ DetailView.prototype.render = function (){
 
   const listItemDetails = document.createElement('ul');
 
-// console.log('category: ', this.listItem.Category);
-  // TODO: split this into label span (bold) and content span
-  const apiCategoryLI = this.createElement('li','Category: ' + this.listItem.Category);
-  const apiDescriptionLI = this.createElement('li', 'Description: ' + this.listItem.Description);
-  const apiLinkLI = this.createElement('li', 'URL: ' + this.listItem.Link);
-  const apiAuthLI = this.createElement('li', 'Auth: ' + this.listItem.Auth);
-  const apiCorsLI = this.createElement('li', 'CORS: ' + this.listItem.Cors);
-  const apiHTTPSLI = this.createElement('li', 'HTTPS: ' + this.listItem.HTTPS);
-
-  listItemDetails.appendChild(apiCategoryLI);
-  listItemDetails.appendChild(apiDescriptionLI);
-  // TODO: this needs to be made into a link
+  this.addLIToDataList(listItemDetails, 'Category: ', this.listItem.Category);
+  this.addLIToDataList(listItemDetails, 'Description: ', this.listItem.Description);
+  const apiLinkA = this.createLink( this.listItem.Link, this.listItem.Link);
+  const apiLinkLI = document.createElement('li');
+  const apiLinkLabel = this.createLabel ( 'URL: ');
+  apiLinkLI.appendChild( apiLinkLabel );
+  apiLinkLI.appendChild( apiLinkA );
   listItemDetails.appendChild(apiLinkLI);
-  listItemDetails.appendChild(apiAuthLI);
-  listItemDetails.appendChild(apiCorsLI);
-  listItemDetails.appendChild(apiHTTPSLI);
+  this.addLIToDataList(listItemDetails, 'Auth: ', this.listItem.Auth);
+  this.addLIToDataList(listItemDetails,  'CORS: ', this.listItem.Cors);
+  this.addLIToDataList(listItemDetails, 'HTTPS: ', this.listItem.HTTPS);
 
   dataListItemElement.appendChild(listItemDetails);
   this.itemContainer.appendChild(dataListItemElement);
 };
 
-// add a label to this function so it can be made bold
+DetailView.prototype.addLIToDataList = function(itemDetails, label, content){
+  itemDetails.appendChild(this.createElementWithLabel('li', label, content));
+};
+
+
+DetailView.prototype.createElementWithLabel = function(type, labelText, text) {
+  const element = document.createElement(type);
+  const labelElement = this.createLabel(labelText);
+  element.appendChild(labelElement);
+  const elementContent = this.createElement('span', text);
+  element.appendChild(elementContent);
+  return element;
+};
+
 DetailView.prototype.createElement = function(type, text) {
   const element = document.createElement(type);
   element.textContent = text;
   return element;
 };
+
+DetailView.prototype.createLabel = function( text ) {
+  const element = document.createElement('span');
+  element.textContent = text;
+  element.className += "label";
+  return element;
+};
+
+DetailView.prototype.createLink = function( url, text ) {
+  const element = document.createElement('a');
+  element.textContent = text;
+  element.href = url;
+  return element;
+}
 
 module.exports = DetailView;
