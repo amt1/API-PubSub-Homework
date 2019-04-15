@@ -44,3 +44,10 @@ I would like to make this more generic. Here are my notes about that:
 // The data structure and key names in the list_view.js file
 // Could this be made more generic so that these specific details could be
 // read in from somewhere else?
+
+Searching the data:
+
+By the querystring:
+https://api.publicapis.org/entries?auth=null
+https://api.publicapis.org/entries?auth=apikey
+https://api.publicapis.org/entries?auth=oauth

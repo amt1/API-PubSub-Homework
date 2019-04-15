@@ -11,33 +11,24 @@ const SelectView = require('./views/select_view.js');
 
 document.addEventListener('DOMContentLoaded', () => {
   console.log('JavaScript Loaded');
+
+  // toggle show / hide of select form
   const searchForm = document.querySelector('#search-form');
   const selectView = new SelectView(searchForm);
   const showFormInput = document.querySelector('#show-form');
+  showFormInput.addEventListener('change', selectView.handleShowFormInput);
 
-  const handleShowFormInput = function(event){
-      let showForm = false;
-
-      if (event.target.checked){
-        showForm=true;
-        searchForm.className="show";
-      } else {
-        showForm = false;
-        searchForm.className="hide";
-
-      }
-      console.log('showForm', showForm);
-  };
-  showFormInput.addEventListener('change', handleShowFormInput);
-
-  var apiURL = 'https://api.publicapis.org/entries';
+  // fetch data from URL
+  // var apiURL = 'https://api.publicapis.org/entries';
+  const apiURL = 'https://api.publicapis.org/entries?category=animals';
   const infoProcessor = new InfoProcessor();
-  infoProcessor.fetchURLData(apiURL);
-
+  const originalData = infoProcessor.fetchURLData(apiURL);
+  console.log('orig',originalData);
+  // display full data list
   const listContainer = document.querySelector('section#data-list-section');
-
   const listView = new ListView(listContainer);
   listView.bindEvents();
-
-
+  infoProcessor.bindEvents();
+const dataSelected = infoProcessor.searchByAuthType(['apiKey']);
+console.log('dataSelected apiKey', dataSelected);
 }); // end brackets

@@ -15,7 +15,6 @@ SelectView.prototype.handleShowFormInput = function(event){
       this.container.className="hide";
 
     }
-    console.log('showForm', showForm);
 };
 
 module.exports = SelectView;

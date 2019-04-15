@@ -11,12 +11,24 @@
     <section id = "search">
       <div id="show-form-checkbox" class = "center">
       <label for="show-form">Show Search Form?
-        <input type="checkbox" name="show-form" id="show-form" ></label>
+        <input type="checkbox" class="checkbox" name="show-form" id="show-form" ></label>
       </div>
       <form id="search-form" class = "hide">
-        here I am
+        <fieldset>
+          <legend>Authentication Types to Include?</legend>
+          <label for="oauth">OAuth
+          <input type="checkbox" name="auth" id="auth" value="oauth"></label>
+          <label for="apikey">API Key
+          <input type="checkbox" name="auth" id="auth" value="apikey"></label>
+          <label for="none">No Authentication
+            <input type="checkbox" name="auth" id="auth" value="none"></label>
+          <label for="x-mashape-key">X-Mashape-Key
+            <input type="checkbox" name="auth" id="auth" value="x-mashape-key"></label>
+
+        </fieldset>
       </form>
     </section>
+    <br class="clear" /><hr /><br />
     <section id="data-list-section">
 
     </section>

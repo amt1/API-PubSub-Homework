@@ -18,10 +18,6 @@ ListView.prototype.render = function () {
   dataListULElement.id="list-data-here";
   this.container.appendChild(dataListULElement);
   console.log('dataList: ', this.dataList);
-  //   this.dataList.forEach((dataItem)=>{
-  //   const detailView = new DetailView(dataListULElement, dataItem);
-  //   detailView.render();
-  // });
   let counter = 0;
   let max = this.dataList['count'];
   for (counter = 0; counter < max; counter++) {

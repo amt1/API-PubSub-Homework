@@ -3,6 +3,15 @@ body {
   font-family: "Verdana", "Arial Narrow", sans-serif;
 }
 
+h1 {
+  text-align: center;
+  margin-bottom: 2em;
+}
+
+.clear {
+  clear: both;
+}
+
 .center {
   text-align: center;
 }
@@ -15,8 +24,17 @@ form#search-form.show {
   display: block;
   background-color: white;
   padding: 2em;
-  margin: 1em;
+  margin: 2em;
   border: 1px solid black;
+  border-radius: 5px;
+}
+
+input.checkbox {
+  padding: 0.5em;
+}
+
+fieldset {
+  padding: 1em;
 }
 
 li.data-list-item {
