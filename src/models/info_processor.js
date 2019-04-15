@@ -7,12 +7,6 @@ const InfoProcessor = function () {
   this.selectors = [];
 };
 
-InfoProcessor.prototype.bindEvents = function () {
-  PubSub.subscribe('SelectView:change', (evt)  => {
-    const selectedData = evt.detail;
-    this.publishSelectorsList(selectedData);
-  })
-};
 
 InfoProcessor.prototype.fetchURLData = function (api_url) {
   const url_to_fetch = api_url;
@@ -21,8 +15,15 @@ InfoProcessor.prototype.fetchURLData = function (api_url) {
     .then( (api_data)=>{
       this.apiData = api_data;
       PubSub.publish('InfoProcessor:api-data-ready', this.apiData);
-      this.publishSelectorsList(api_data);
+      this.publishSelectorsList(this.apiData);
     });
+};
+// this looks wrong
+InfoProcessor.prototype.bindEvents = function () {
+  PubSub.subscribe('SelectView:change', (evt)  => {
+    // const selectedData = evt.detail;
+    // this.publishSelectorsList(selectedData);
+  })
 };
 
 InfoProcessor.prototype.publishSelectorsList = function (api_data) {
@@ -33,6 +34,8 @@ InfoProcessor.prototype.publishSelectorsList = function (api_data) {
   PubSub.publish('InfoProcessor:selectors-ready', this.selectors);
 };
 
+
+
 InfoProcessor.prototype.listAllAuthTypes = function () {
   console.log('in listAllAuthTypes ', this.apiData);
   const authList = this.apiData['entries'].map(api => api.Auth);
@@ -40,15 +43,15 @@ InfoProcessor.prototype.listAllAuthTypes = function () {
 }
 
 InfoProcessor.prototype.getAuthTypesList = function () {
-  return this.listAllAuthTypes().filter((authType, index, array) => {
+  return this.listAllAuthTypes.filter((authType, index, array) => {
     return array.indexOf(authType) === index;
   });
 }
-InfoProcessor.prototype.searchByAuthType = function (authSelectedArray) {
+InfoProcessor.prototype.searchByAuthType = function (api_data, authSelectedArray) {
 // why is this.apiData empty here????
   console.log('looking for auth: ', authSelectedArray);
-console.log('apiData', apiData);
-const dataSelected = this.apiData.filter(api => ( authSelectedArray.includes(api['Auth'])));
+console.log('apiData', api_data);
+const dataSelected = api_data.filter(api => ( authSelectedArray.includes(api['Auth'])));
 return dataSelected;
 
 //  }

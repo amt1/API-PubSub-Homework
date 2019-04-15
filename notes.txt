@@ -51,3 +51,5 @@ By the querystring:
 https://api.publicapis.org/entries?auth=null
 https://api.publicapis.org/entries?auth=apikey
 https://api.publicapis.org/entries?auth=oauth
+
+Searching by querystring only lets you get one value from each category at once

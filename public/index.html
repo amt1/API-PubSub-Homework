@@ -17,14 +17,18 @@
         <fieldset>
           <legend>Authentication Types to Include?</legend>
           <label for="oauth">OAuth
-          <input type="checkbox" name="auth" id="auth" value="oauth"></label>
+          <input type="checkbox" name="auth" id="oauth" value="OAuth"></label>
           <label for="apikey">API Key
-          <input type="checkbox" name="auth" id="auth" value="apikey"></label>
+          <input type="checkbox" name="auth" id="apikey" value="apiKey"></label>
           <label for="none">No Authentication
-            <input type="checkbox" name="auth" id="auth" value="none"></label>
+            <input type="checkbox" name="auth" id="none" value="No"></label>
           <label for="x-mashape-key">X-Mashape-Key
-            <input type="checkbox" name="auth" id="auth" value="x-mashape-key"></label>
-
+            <input type="checkbox" name="auth" id="x-mashape-key" value="X-Mashape-Key"></label>
+            <label for="null">Null
+              <input type="checkbox" name="auth" id="null" value=""></label>
+              <div class = "center" ><br />
+            <input type="submit" id="auth-search" name="auth" value="Search" />
+          </div>
         </fieldset>
       </form>
     </section>
